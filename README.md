@@ -40,7 +40,7 @@ There are two types of users:
 
 ## Technologies Used
 - **Backend**: Python, Flask  
-- **Frontend**: HTML, CSS, JavaScript  
+- **Frontend**: HTML, CSS 
 - **Database**: MySQL  
 - **Version Control**: Git/GitHub  
 
