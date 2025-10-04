@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="game-container">
+    <h2>Guess the 5-letter word</h2>
+    <p>Enter your guess in uppercase letters only. Maximum 5 attempts.</p>
+
+    {% if not game_over %}
+    <form method="POST" id="guess-form">
+        <input type="text" name="guess" maxlength="5" minlength="5" required style="text-transform:uppercase" autofocus>
+        <button type="submit">Submit</button>
+    </form>
+    {% endif %}
+
+ 
+    <div class="grid-container">
+        {% set total_attempts = 5 %}
+        {% for i in range(total_attempts) %}
+            <div class="grid-row">
+                {% if past and i < past|length %}
+                    {% for letter in past[i].colored %}
+                        <div class="grid-tile {{ letter.color }}">{{ letter.letter }}</div>
+                    {% endfor %}
+                {% else %}
+                    {% for j in range(5) %}
+                        <div class="grid-tile empty"></div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    
+</div>
+{% endblock %}

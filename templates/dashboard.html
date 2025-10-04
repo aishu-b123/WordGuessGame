@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="dashboard">
+
+<div class="dashboard-container">
+<h2>Welcome, {{ session.username }}!</h2>
+
+<p>Ready to play the daily Guess the Word game?</p>
+
+<div class="dashboard-links">
+    {% if session.role != 'admin' %}
+    <a href="{{ url_for('play') }}" class="btn">Start Game</a>
+    {% endif %}
+    {% if session.role == 'admin' %}
+        <a href="{{ url_for('admin_report') }}" class="btn">View Admin Reports</a>
+    {% endif %}
+</div>
+</div>
+ <div>
+ {% if session.role != 'admin' %}
+<form method="POST" class="date-form">
+    <label for="selected_date">Select Date:</label>
+    <input type="date" id="selected_date" name="selected_date" value="{{ selected_date }}">
+    <button type="submit">View</button>
+</form>
+
+<h3>Game History for {{ selected_date }}</h3>
+
+{% if dashboard_data %}
+    {% for word_id, wdata in dashboard_data.items() %}
+        <p><strong>Word #{{ loop.index }} ({{ wdata.word }})</strong></p>
+        <div class="grid-container">
+            {% for guess in wdata.guesses %}
+                <div class="grid-row">
+                    {% for letter in guess %}
+                        <div class="grid-tile {{ letter.color }}">{{ letter.letter }}</div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+    {% endfor %}
+{% else %}
+    <p>No guesses found for this date. Try another day!</p>
+{% endif %}
+{% endif %}
+</div>
+</div>
+{% endblock %}

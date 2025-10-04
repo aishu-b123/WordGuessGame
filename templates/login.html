@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h2>Login</h2>
+
+<p>Already have an account? Login here. New user? <a href="{{ url_for('register') }}">Register</a></p>
+
+<form method="post">
+  <label>Username</label><br>
+  <input name="username" required placeholder="Enter username"><br>
+
+  <label>Password</label><br>
+  <input name="password" type="password" required placeholder="Enter password"><br>
+
+  <button type="submit">Login</button>
+</form>
+{% endblock %}

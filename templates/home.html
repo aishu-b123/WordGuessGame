@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block title %}Welcome | Guess The Word{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <h1 class="main-title">Welcome to Guess The Word!</h1>
+    <p class="subtitle">Login or Register to start playing</p>
+    <div class="home-buttons">
+        <a href="{{ url_for('login') }}" class="btn">Login</a>
+        <a href="{{ url_for('register') }}" class="btn">Register</a>
+    </div>
+</div>
+{% endblock %}

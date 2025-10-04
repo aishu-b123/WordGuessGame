@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h2>Admin Reports</h2>
+
+<form method="POST" class="date-form">
+    <label for="selected_date">Select Date:</label>
+    <input type="date" id="selected_date" name="selected_date" value="{{ selected_date }}">
+    <button type="submit">View</button>
+</form>
+
+<h3>Daily Summary</h3>
+<table>
+  <tr><th>Date</th><th>Number of Users</th><th>Correct Guesses</th></tr>
+  {% for r in daily %}
+    <tr><td>{{ r.guess_date }}</td><td>{{ r.users }}</td><td>{{ r.correct_guesses }}</td></tr>
+  {% endfor %}
+</table>
+
+<h3>User Summary</h3>
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Words Tried</th>
+    <th>Total Guesses</th>
+    <th>Correct Guesses</th>
+    <th>Details</th>
+  </tr>
+  {% for u in users %}
+    <tr>
+      <td>{{ u.username }}</td>
+      <td>{{ u.words_tried or 0 }}</td>
+      <td>{{ u.total_guesses or 0 }}</td>
+      <td>{{ u.total_correct or 0 }}</td>
+      <td><a href="{{ url_for('admin_user_report', user_id=u.user_id) }}">View</a></td>
+    </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h2>User Detailed Report</h2>
+
+<form method="POST" class="date-form">
+    <label for="selected_date">Select Date:</label>
+    <input type="date" id="selected_date" name="selected_date" value="{{ selected_date }}">
+    <button type="submit">View</button>
+</form>
+
+{% if summary %}
+  <h3>Summary</h3>
+  <p>Total Words Tried: {{ summary.words_tried }}</p>
+  <p>Total Guesses: {{ summary.total_guesses }}</p>
+  <p>Total Correct: {{ summary.total_correct }}</p>
+{% endif %}
+
+{% if user_report %}
+  {% for date, words in user_report.items() %}
+    <h3>Date: {{ date }}</h3>
+    {% for word_id, wdata in words.items() %}
+      <p><strong>Word #{{ loop.index }}: {{ wdata.word }}</strong></p>
+      <table>
+        <tr><th>Guess #</th><th>Guessed Word</th><th>Result</th></tr>
+        {% for g in wdata.guesses %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ g.guess }}</td>
+            <td>{{ 'Correct' if g.is_correct else 'Incorrect' }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+      <br>
+    {% endfor %}
+  {% endfor %}
+{% else %}
+  <p>No game records found for this user on the selected date.</p>
+{% endif %}
+
+<p><a href="{{ url_for('admin_report') }}">Back to Admin Reports</a></p>
+{% endblock %}
