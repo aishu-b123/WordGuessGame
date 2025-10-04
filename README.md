@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Guess the Word Game 
 
@@ -48,3 +49,6 @@ There are two types of users:
 - **Version Control**: Git/GitHub  
 
 ---
+=======
+# WordGuessGame
+>>>>>>> cf8b0fdc829a762a594cfeca38daa36842b00437
