@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # Guess the Word Game 
 
 ## Project Overview
@@ -10,7 +8,6 @@ There are two types of users:
 - **Admin**: Configure game settings, run reports, and monitor user activity.  
 - **Player**: Play the word-guessing game with a limit of 3 words per day.  
 
----
 
 ## Features
 
@@ -40,7 +37,6 @@ There are two types of users:
 - **Daily report**: Number of active users and number of correct guesses.  
 - **User report**: Date-wise number of words tried and number of correct guesses.  
 
----
 
 ## Technologies Used
 - **Backend**: Python, Flask  
@@ -48,7 +44,4 @@ There are two types of users:
 - **Database**: MySQL  
 - **Version Control**: Git/GitHub  
 
----
-=======
-# WordGuessGame
->>>>>>> cf8b0fdc829a762a594cfeca38daa36842b00437
+
